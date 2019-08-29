@@ -7,6 +7,10 @@
     <groupId>bewvy.se</groupId>
     <artifactId>ATM-di</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.release>12</maven.compiler.release>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
