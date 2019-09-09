@@ -23,19 +23,21 @@ public class ATM {
 	private Customer currentCustomer;
 	private Account currentAccount;
 	private Bank bank;
+	private DataSourceDB dataSourceDB;
 
 	/**
      * Constructs an ATM for a bank.
 	 */
 	@Autowired
-	public ATM(Bank bank) {
+	public ATM(Bank bank, DataSourceDB dataSourceDB) {
 		this.bank = bank;
 		this.customerNumber = -1;
 		this.currentAccount = null;
 		this.state = START;
+		this.dataSourceDB = dataSourceDB;
 	}
 
-	public void init() throws IOException {
+	public void init() {
 		bank.initializeCustomers();
 	}
 
@@ -75,6 +77,7 @@ public class ATM {
 	public void withdraw(double value) {
 		assert state == TRANSACT;
 		currentAccount.withdraw(value);
+		dataSourceDB.updateDB(currentCustomer.getCustomerNumber(), currentAccount.getBalance());
 	}
 
 	/**
@@ -85,6 +88,7 @@ public class ATM {
 	public void deposit(double value) {
 		assert state == TRANSACT;
 		currentAccount.deposit(value);
+		dataSourceDB.updateDB(currentCustomer.getCustomerNumber(), currentAccount.getBalance());
 	}
 
 	/**
@@ -109,6 +113,8 @@ public class ATM {
 		Account receivingAccount = receivingCustomer.getAccount();
 		currentAccount.withdraw(amount);
 		receivingAccount.deposit(amount);
+		dataSourceDB.updateDB(currentCustomer.getCustomerNumber(), currentAccount.getBalance());
+		dataSourceDB.updateDB(receivingCustomer.getCustomerNumber(), receivingAccount.getBalance());
 	}
 
 	/**

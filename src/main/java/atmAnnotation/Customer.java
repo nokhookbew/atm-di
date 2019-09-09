@@ -1,8 +1,11 @@
 package atmAnnotation;
 
+import lombok.Data;
+
 /**
  * A bank customer with a checking and a savings account.
  */
+@Data
 public class Customer {
 
    private int customerNumber;

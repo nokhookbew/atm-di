@@ -1,9 +1,12 @@
 package atmAnnotation;
 
+import lombok.Data;
+
 /**
  * A bank account has a balance that can be changed by
  * deposits and withdrawals.
  */
+@Data
 public class Account {
    private double balance;
 

@@ -20,19 +20,19 @@ import java.util.Map;
 public class Bank {
 
    private Map<Integer, Customer> customers;
-   private DataSource dataSource;
+   private DataSourceDB dataSourceDB;
 
    /**
     * Constructs a bank with no customers.
     */
    @Autowired
-   public Bank(DataSource dataSource) {
-      this.dataSource = dataSource;
+   public Bank(DataSourceDB dataSourceDB) {
+      this.dataSourceDB = dataSourceDB;
       customers = new HashMap<Integer,Customer>();
    }
 
-   public void initializeCustomers() throws IOException {
-      customers = dataSource.readCustomers();
+   public void initializeCustomers() {
+      customers = dataSourceDB.readCustomers();
    }
    /**
     * Adds a customer to the bank.

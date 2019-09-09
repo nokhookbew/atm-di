@@ -4,8 +4,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.CDATASection;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 @Data
@@ -16,20 +18,16 @@ import java.util.Scanner;
 public class ATMSimulator {
 
 	private ATM atm;
+	private DataSourceDB dataSourceDB;
 
 	@Autowired
-	public ATMSimulator(ATM atm) {
+	public ATMSimulator(ATM atm, DataSourceDB dataSourceDB) {
 		this.atm = atm;
+		this.dataSourceDB = dataSourceDB;
 	}
 
-	public void run() {
-		try {
-			atm.init();
-		}
-		catch(IOException e) {
-			System.out.println("Error reading account data.");
-			return;
-		}
+	public void run() throws SQLException {
+		atm.init();
 
 		Scanner in = new Scanner(System.in);
 
@@ -68,8 +66,10 @@ public class ATMSimulator {
 				else if (command.equalsIgnoreCase("D")) {
 					atm.reset();
 				}
-				else if (command.equalsIgnoreCase("E"))
+				else if (command.equalsIgnoreCase("E")) {
+					dataSourceDB.closeDB();
 					System.exit(0);
+				}
 				else
 					System.out.println("Illegal input!");                                    
 			}         
