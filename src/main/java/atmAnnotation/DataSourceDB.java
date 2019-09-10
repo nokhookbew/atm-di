@@ -1,5 +1,6 @@
 package atmAnnotation;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +11,11 @@ import java.util.Map;
 @Component
 @Primary
 public class DataSourceDB {
+    @Value("${urlDB}") private String url;
+    @Value("${query}") private String query;
 
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:atm-di.db";
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(url);
@@ -28,11 +30,10 @@ public class DataSourceDB {
     }
 
     public void updateDB(int customerNum, double balance){
-        String sql = "UPDATE users SET balance = ?  "
+        String update = "UPDATE users SET balance = ?  "
                 + "WHERE customerNumber = ?";
-
         try {
-            PreparedStatement pstmt = this.connect().prepareStatement(sql);
+            PreparedStatement pstmt = this.connect().prepareStatement(update);
             // set the corresponding param
             pstmt.setDouble(1, balance);
             pstmt.setInt(2, customerNum);
@@ -45,7 +46,6 @@ public class DataSourceDB {
 
     public Map<Integer, Customer> readCustomers() {
         Map<Integer, Customer> customers = new HashMap<Integer, Customer>();
-        String query = "Select * from users";
         try {
             Statement statement = this.connect().createStatement();
             ResultSet result = statement.executeQuery(query);
