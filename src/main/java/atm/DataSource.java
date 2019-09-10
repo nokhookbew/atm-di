@@ -26,7 +26,7 @@ public class DataSource {
      * Reads the customer numbers and pins
      * and initializes the bank accounts.
      */
-    public Map<Integer, Customer> readCustomers() throws IOException {
+    Map<Integer, Customer> readCustomers() throws IOException {
         Map<Integer, Customer> customers = new HashMap<Integer, Customer>();
 
         Scanner in = new Scanner(new FileReader(filename));

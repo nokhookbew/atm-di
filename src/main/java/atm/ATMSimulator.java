@@ -19,7 +19,7 @@ public class ATMSimulator {
 //		this.atm = atm;
 //	}
 
-	public void run() {
+	void run() {
 		try {
 			atm.init();
 		}

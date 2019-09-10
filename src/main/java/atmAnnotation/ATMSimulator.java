@@ -26,11 +26,9 @@ public class ATMSimulator {
 		this.dataSourceDB = dataSourceDB;
 	}
 
-	public void run() throws SQLException {
+	void run() throws SQLException {
 		atm.init();
-
 		Scanner in = new Scanner(System.in);
-
 		while (true) {
 			int state = atm.getState();
 

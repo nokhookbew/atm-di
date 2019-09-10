@@ -26,7 +26,7 @@ public class Bank {
 //      customers = new HashMap<Integer,Customer>();
 //   }
 
-   public void initializeCustomers() throws IOException {
+   void initializeCustomers() throws IOException {
       customers = dataSource.readCustomers();
    }
    /**
@@ -43,7 +43,7 @@ public class Bank {
     * @return the matching customer, or null if no customer
     * matches
     */
-   public Customer findCustomer(int number) {
+   Customer findCustomer(int number) {
 	  return customers.get(number);
    }
 }

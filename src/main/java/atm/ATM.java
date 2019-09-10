@@ -30,14 +30,14 @@ public class ATM {
 		this.state = START;
 	}
 
-	public void init() throws IOException {
+	void init() throws IOException {
 		bank.initializeCustomers();
 	}
 
 	/**
      * Resets the ATM to the initial state.
 	 */
-	public void reset() {
+	void reset() {
 		customerNumber = -1;
 		currentAccount = null;
 		state = START;
@@ -50,7 +50,7 @@ public class ATM {
 	 * @param customerNum current customer number
      * @param pin pin being inputted
 	 */
-	public void validateCustomer(int customerNum, int pin) {
+	void validateCustomer(int customerNum, int pin) {
 		assert state == START;
 
 		if (bank.findCustomer(customerNum) != null &&
@@ -67,7 +67,7 @@ public class ATM {
      * (Precondition: state is TRANSACT)
      * @param value the amount to withdraw
 	 */
-	public void withdraw(double value) {
+	void withdraw(double value) {
 		assert state == TRANSACT;
 		currentAccount.withdraw(value);
 	}
@@ -77,7 +77,7 @@ public class ATM {
      * (Precondition: state is TRANSACT)
      * @param value the amount to deposit
 	 */
-	public void deposit(double value) {
+	void deposit(double value) {
 		assert state == TRANSACT;
 		currentAccount.deposit(value);
 	}
@@ -98,7 +98,7 @@ public class ATM {
 	 * @param customerNum receiver customer
 	 * @param amount amount to be transferred
 	 */
-	public void transfer(int customerNum, double amount) {
+	void transfer(int customerNum, double amount) {
 		assert state == TRANSACT;
 		Customer receivingCustomer = bank.findCustomer(customerNum);
 		Account receivingAccount = receivingCustomer.getAccount();
@@ -110,7 +110,7 @@ public class ATM {
      * Gets the current state of this ATM.
      * @return the current state
 	 */
-	public int getState() {
+	int getState() {
 		return state;
 	}
 }

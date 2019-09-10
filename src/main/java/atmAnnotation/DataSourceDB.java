@@ -25,11 +25,11 @@ public class DataSourceDB {
         return connection;
     }
 
-    public void closeDB() throws SQLException {
+    void closeDB() throws SQLException {
         this.connect().close();
     }
 
-    public void updateDB(int customerNum, double balance){
+    void updateDB(int customerNum, double balance){
         String update = "UPDATE users SET balance = ?  "
                 + "WHERE customerNumber = ?";
         try {
@@ -44,7 +44,7 @@ public class DataSourceDB {
         }
     }
 
-    public Map<Integer, Customer> readCustomers() {
+    Map<Integer, Customer> readCustomers() {
         Map<Integer, Customer> customers = new HashMap<Integer, Customer>();
         try {
             Statement statement = this.connect().createStatement();

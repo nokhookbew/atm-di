@@ -34,7 +34,7 @@ public class Customer {
     * @param inputPin a personal identification number
     * @return true if the customer number and PIN match
     */
-   public boolean match(int inputPin) {
+   boolean match(int inputPin) {
       return pin == inputPin;
    }
       

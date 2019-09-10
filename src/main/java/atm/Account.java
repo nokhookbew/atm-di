@@ -18,7 +18,7 @@ public class Account {
     * Constructs a bank account with a given balance.
     * @param initialBalance the initial balance
     */
-   public Account(double initialBalance) {
+   Account(double initialBalance) {
       balance = initialBalance;
    }
  
@@ -26,7 +26,7 @@ public class Account {
     * Deposits money into the account.
     * @param amount the amount of money to withdraw
     */
-   public void deposit(double amount) {
+   void deposit(double amount) {
       balance = balance + amount;
    }
 
@@ -34,7 +34,7 @@ public class Account {
     * Withdraws money from the account.
     * @param amount the amount of money to deposit
     */
-   public void withdraw(double amount) {
+   void withdraw(double amount) {
       balance = balance - amount;
    }
 

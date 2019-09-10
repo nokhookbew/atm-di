@@ -31,7 +31,7 @@ public class Bank {
       customers = new HashMap<Integer,Customer>();
    }
 
-   public void initializeCustomers() {
+   void initializeCustomers() {
       customers = dataSourceDB.readCustomers();
    }
    /**
@@ -48,7 +48,7 @@ public class Bank {
     * @return the matching customer, or null if no customer
     * matches
     */
-   public Customer findCustomer(int number) {
+   Customer findCustomer(int number) {
 	  return customers.get(number);
    }
 }
