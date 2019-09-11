@@ -4,10 +4,10 @@
 
 ####packages
 
-atm = xml-base config
+- `atm` = xml-base config
 
-atmAnnotation = annotation-base config and connect database sqlite
+- `atmAnnotation` = annotation-base config and connect database sqlite
 
-atmJavaBase = java-base config
+- `atmJavaBase` = java-base config
 
 
