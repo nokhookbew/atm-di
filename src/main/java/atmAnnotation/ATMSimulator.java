@@ -1,12 +1,9 @@
 package atmAnnotation;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.w3c.dom.CDATASection;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 

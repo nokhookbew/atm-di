@@ -1,12 +1,10 @@
 package atmAnnotation;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +26,7 @@ public class Bank {
    @Autowired
    public Bank(DataSourceDB dataSourceDB) {
       this.dataSourceDB = dataSourceDB;
-      customers = new HashMap<Integer,Customer>();
+      customers = new HashMap<Integer, Customer>();
    }
 
    void initializeCustomers() {
