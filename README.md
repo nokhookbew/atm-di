@@ -10,4 +10,6 @@
 
 - `atmJavaBase` = java-base config
 
+- `atmSpringJDBC` = connect database by SpringJDBC
+
 
