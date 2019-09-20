@@ -4,13 +4,10 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 @Data
-/**
-   A text-based simulation of an automatic teller machine.
- */
+
 @Component
 public class ATMSimulator {
 
